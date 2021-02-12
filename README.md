@@ -1,5 +1,5 @@
 [![CI](https://github.com/marvel-nccr/ansible-role-nwchem/workflows/CI/badge.svg)](https://github.com/marvel-nccr/ansible-role-nwchem/actions)
-[![Ansible Role](https://img.shields.io/ansible/role/25521.svg)](https://galaxy.ansible.com/marvel-nccr/nwchem)
+[![Ansible Role](https://img.shields.io/ansible/role/53077.svg)](https://galaxy.ansible.com/marvel-nccr/nwchem)
 [![Release](https://img.shields.io/github/tag/marvel-nccr/ansible-role-nwchem.svg)](https://github.com/marvel-nccr/ansible-role-nwchem/releases)
 
 # Ansible Role: marvel-nccr.nwchem
