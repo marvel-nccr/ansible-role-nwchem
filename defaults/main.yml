@@ -1,1 +1,15 @@
-# in this file add variables to be used in the tasks
+nwchem_version: "7.0.2"
+nwchem_release_number: "1"
+
+nwchem_deb_url_data: "https://github.com/nwchemgit/nwchem/releases/download/v{{nwchem_version}}-release/nwchem-data_{{nwchem_version}}-{{nwchem_release_number}}_all.ubuntu_{{ansible_distribution_release|lower}}.deb"
+nwchem_deb_url_main: "https://github.com/nwchemgit/nwchem/releases/download/v{{nwchem_version}}-release/nwchem_{{nwchem_version}}-{{nwchem_release_number}}_amd64.ubuntu_{{ansible_distribution_release|lower}}.deb"
+
+nwchem_temp_folder: "/tmp"
+run_tests: true
+
+# This variable will be picked up by the Aiida role
+nwchem_executables:
+- name: nwchem
+  folder: "/usr/bin"
+  executable: nwchem
+  plugin: nwchem.nwchem

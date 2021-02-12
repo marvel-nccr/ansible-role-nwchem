@@ -1,9 +1,37 @@
-# Add task instructions here
+- name: Install base dependencies
+  become: true
+  apt:
+    update_cache: true
+    cache_valid_time: 86400
+    name:
+    - python3-dev
+    - gfortran
+    - mpi-default-bin
+    - mpi-default-dev
+    - ssh
+    - xz-utils
 
-# - include_tasks: setup-ubuntu-16.04.yml
-#   when: ansible_distribution == 'Ubuntu' \
-#         and ansible_distribution_version == '16.04'
-#
-# - include_tasks: setup-ubuntu-18.04.yml
-#   when: ansible_distribution == 'Ubuntu' \
-#         and ansible_distribution_version == '18.04'
+- name: "Install nwchem data for Ubuntu {{ ansible_distribution_release|lower }}"
+  apt:
+    deb: "{{ nwchem_deb_url_data }}"
+  register: nwchem_install_data
+  # retry in case of bad connection
+  retries: 2
+  until: not nwchem_install_data.failed
+  delay: 10
+
+
+- name: "Install nwchem main for Ubuntu {{ ansible_distribution_release|lower }}"
+  apt:
+    deb: "{{ nwchem_deb_url_main }}"
+  register: nwchem_install_main
+  # retry in case of bad connection
+  retries: 2
+  until: not nwchem_install_main.failed
+  delay: 10
+
+- name: Run tests
+  when: run_tests and (nwchem_install_data.changed or nwchem_install_main.changed)
+  include_tasks: tests.yml
+  loop:
+  - "h20.nw"

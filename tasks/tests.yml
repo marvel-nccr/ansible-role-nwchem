@@ -1,0 +1,7 @@
+- name: "tests: copy input file {{ item }}"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ nwchem_temp_folder }}/{{ item }}"
+- name: "tests: run nwchem {{ item }}"
+  command: "nwchem {{ nwchem_temp_folder }}/{{ item }}"
+  changed_when: false
