@@ -4,7 +4,7 @@
 
 # Ansible Role: marvel-nccr.nwchem
 
-An Ansible role that installs [NWChem](https://www.nwchem-sw.org/) on Ubuntu.
+An Ansible role that installs [NWChem](https://github.com/nwchemgit/nwchem) on Ubuntu.
 
 ## Installation
 
