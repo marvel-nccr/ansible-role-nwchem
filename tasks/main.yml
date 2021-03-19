@@ -12,6 +12,7 @@
     - xz-utils
 
 - name: "Install nwchem data for Ubuntu {{ ansible_distribution_release|lower }}"
+  become: true
   apt:
     deb: "{{ nwchem_deb_url_data }}"
   register: nwchem_install_data
@@ -22,6 +23,7 @@
 
 
 - name: "Install nwchem main for Ubuntu {{ ansible_distribution_release|lower }}"
+  become: true
   apt:
     deb: "{{ nwchem_deb_url_main }}"
   register: nwchem_install_main
