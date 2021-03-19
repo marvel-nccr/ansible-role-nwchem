@@ -4,4 +4,6 @@
     dest: "{{ nwchem_temp_folder }}/{{ item }}"
 - name: "tests: run nwchem {{ item }}"
   command: "nwchem {{ nwchem_temp_folder }}/{{ item }}"
+  args:
+    chdir: "{{ nwchem_temp_folder }}"
   changed_when: false
