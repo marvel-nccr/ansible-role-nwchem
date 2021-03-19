@@ -30,6 +30,26 @@
   until: not nwchem_install_main.failed
   delay: 10
 
+- name: Add release notes (version)
+  include_role:
+    name: release_notes
+  vars:
+    section: "nwchem"
+    option: "version"
+    value: "{{ nwchem_version }}"
+  when: release_notes is defined and release_notes
+
+- name: Add release notes (usage)
+  include_role:
+    name: release_notes
+  vars:
+    section: "nwchem"
+    option: "usage"
+    value: >-
+      nwchem is compiled and installed in /usr/bin.
+      Simply run 'nwchem'.
+  when: release_notes is defined and release_notes
+
 - name: Run tests
   when: run_tests and (nwchem_install_data.changed or nwchem_install_main.changed)
   include_tasks: tests.yml
