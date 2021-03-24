@@ -13,3 +13,4 @@ nwchem_executables:
   folder: "/usr/bin"
   executable: nwchem
   plugin: nwchem.nwchem
+  version: "{{ nwchem_version }}"
